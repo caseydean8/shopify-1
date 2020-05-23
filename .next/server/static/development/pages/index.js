@@ -101,7 +101,7 @@ module.exports =
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nvar __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;\n\n// import { Layout, Page, TextStyle } from '@shopify/polaris';\nconst Index = () => __jsx(\"div\", null, __jsx(\"p\", null, \"Sample app using React and Next.js\")) // <Page>\n//   <Layout>\n//   <TextStyle variation=\"positive\">\n//     Sample app using React and Next.js\n//   </TextStyle>\n//   </Layout>\n// </Page>\n;\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Index);//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9wYWdlcy9pbmRleC5qcz80NGQ4Il0sIm5hbWVzIjpbIkluZGV4Il0sIm1hcHBpbmdzIjoiOzs7Ozs7QUFBQTtBQUVBLE1BQU1BLEtBQUssR0FBRyxNQUNaLG1CQUNFLHNEQURGLENBRFksQ0FJWjtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQVZGOztBQWFlQSxvRUFBZiIsImZpbGUiOiIuL3BhZ2VzL2luZGV4LmpzLmpzIiwic291cmNlc0NvbnRlbnQiOlsiLy8gaW1wb3J0IHsgTGF5b3V0LCBQYWdlLCBUZXh0U3R5bGUgfSBmcm9tICdAc2hvcGlmeS9wb2xhcmlzJztcblxuY29uc3QgSW5kZXggPSAoKSA9PiAoXG4gIDxkaXY+XG4gICAgPHA+U2FtcGxlIGFwcCB1c2luZyBSZWFjdCBhbmQgTmV4dC5qczwvcD5cbiAgPC9kaXY+XG4gIC8vIDxQYWdlPlxuICAvLyAgIDxMYXlvdXQ+XG4gIC8vICAgPFRleHRTdHlsZSB2YXJpYXRpb249XCJwb3NpdGl2ZVwiPlxuICAvLyAgICAgU2FtcGxlIGFwcCB1c2luZyBSZWFjdCBhbmQgTmV4dC5qc1xuICAvLyAgIDwvVGV4dFN0eWxlPlxuICAvLyAgIDwvTGF5b3V0PlxuICAvLyA8L1BhZ2U+XG4pO1xuXG5leHBvcnQgZGVmYXVsdCBJbmRleDsiXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./pages/index.js\n");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _shopify_polaris__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @shopify/polaris */ \"@shopify/polaris\");\n/* harmony import */ var _shopify_polaris__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__);\n\nvar __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;\n\n\nconst Index = () => __jsx(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__[\"Page\"], null, __jsx(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__[\"Layout\"], null, __jsx(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__[\"TextStyle\"], {\n  variation: \"positive\"\n}, \"Sample app using React and Next.js\")));\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Index);//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9wYWdlcy9pbmRleC5qcz80NGQ4Il0sIm5hbWVzIjpbIkluZGV4Il0sIm1hcHBpbmdzIjoiOzs7Ozs7O0FBQUE7O0FBRUEsTUFBTUEsS0FBSyxHQUFHLE1BQ1osTUFBQyxxREFBRCxRQUNFLE1BQUMsdURBQUQsUUFDRSxNQUFDLDBEQUFEO0FBQVcsV0FBUyxFQUFDO0FBQXJCLHdDQURGLENBREYsQ0FERjs7QUFVZUEsb0VBQWYiLCJmaWxlIjoiLi9wYWdlcy9pbmRleC5qcy5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IExheW91dCwgUGFnZSwgVGV4dFN0eWxlIH0gZnJvbSBcIkBzaG9waWZ5L3BvbGFyaXNcIjtcblxuY29uc3QgSW5kZXggPSAoKSA9PiAoXG4gIDxQYWdlPlxuICAgIDxMYXlvdXQ+XG4gICAgICA8VGV4dFN0eWxlIHZhcmlhdGlvbj1cInBvc2l0aXZlXCI+XG4gICAgICAgIFNhbXBsZSBhcHAgdXNpbmcgUmVhY3QgYW5kIE5leHQuanNcbiAgICAgIDwvVGV4dFN0eWxlPlxuICAgIDwvTGF5b3V0PlxuICA8L1BhZ2U+XG4pO1xuXG5leHBvcnQgZGVmYXVsdCBJbmRleDtcbiJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./pages/index.js\n");
 
 /***/ }),
 
@@ -114,6 +114,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
 
 module.exports = __webpack_require__(/*! /Users/caseydean8/Desktop/shopify-apps/shopify-1/pages/index.js */"./pages/index.js");
 
+
+/***/ }),
+
+/***/ "@shopify/polaris":
+/*!***********************************!*\
+  !*** external "@shopify/polaris" ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"@shopify/polaris\");//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vZXh0ZXJuYWwgXCJAc2hvcGlmeS9wb2xhcmlzXCI/YTYyMyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSIsImZpbGUiOiJAc2hvcGlmeS9wb2xhcmlzLmpzIiwic291cmNlc0NvbnRlbnQiOlsibW9kdWxlLmV4cG9ydHMgPSByZXF1aXJlKFwiQHNob3BpZnkvcG9sYXJpc1wiKTsiXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///@shopify/polaris\n");
 
 /***/ }),
 
