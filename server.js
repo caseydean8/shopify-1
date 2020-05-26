@@ -6,47 +6,66 @@ const { default: createShopifyAuth } = require("@shopify/koa-shopify-auth");
 const { verifyRequest } = require("@shopify/koa-shopify-auth");
 const session = require("koa-session");
 dotenv.config();
-const { default: graphQLProxy } = require('@shopify/koa-shopify-graphql-proxy');
-const { ApiVersion } = require('@shopify/koa-shopify-graphql-proxy');
-const getSubscriptionUrl = require('./server/getSubscriptionUrl');
+
+const { default: graphQLProxy } = require("@shopify/koa-shopify-graphql-proxy");
+const Router = require("koa-router");
+const {
+  receiveWebhook,
+  registerWebhook,
+} = require("@shopify/koa-shopify-webhooks");
+const { ApiVersion } = require("@shopify/koa-shopify-graphql-proxy");
+const getSubscriptionUrl = require("./server/getSubscriptionUrl");
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
-const { SHOPIFY_API_SECRET_KEY, SHOPIFY_API_KEY } = process.env;
+const { SHOPIFY_API_SECRET_KEY, SHOPIFY_API_KEY, HOST } = process.env;
 
 app.prepare().then(() => {
   const server = new Koa();
   server.use(session({ secure: true, sameSite: "none" }, server));
   server.keys = [SHOPIFY_API_SECRET_KEY];
-  
+
   server.use(
     createShopifyAuth({
       apiKey: SHOPIFY_API_KEY,
       secret: SHOPIFY_API_SECRET_KEY,
       // is index position important below?
-      scopes: ['write_products', 'read_products'],
+      scopes: ["write_products", "read_products"],
       async afterAuth(ctx) {
         const { shop, accessToken } = ctx.session;
-        ctx.cookies.set('shopOrigin', shop, {
+        ctx.cookies.set("shopOrigin", shop, {
           httpOnly: false,
           secure: true,
-          sameSite: 'none'
+          sameSite: "none",
         });
+
+        const registration = await registerWebhook({
+          address: `${HOST}/webhooks/products/create`,
+          topic: "PRODUCTS_CREATE",
+          accessToken,
+          shop,
+          apiVersion: ApiVersion.October19, // might need to be updated https://partners.shopify.com/1567645/apps/3865695/edit
+        });
+
+        registration.success
+          ? console.log("Succesfully registered webhook")
+          : console.log("Failed to register webhook", registration.result);
+          
         await getSubscriptionUrl(ctx, accessToken, shop);
       },
-    }),
+    })
   );
 
-  server.use(graphQLProxy({version: ApiVersion.October19}));
+  server.use(graphQLProxy({ version: ApiVersion.October19 }));
   server.use(verifyRequest());
   server.use(async (ctx) => {
     await handle(ctx.req, ctx.res);
     ctx.respond = false;
     ctx.res.statusCode = 200;
-    return
+    return;
   });
 
   server.listen(port, () => {
