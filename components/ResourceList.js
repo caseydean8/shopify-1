@@ -5,6 +5,7 @@ import store from 'store-js';
 import { Redirect } from '@shopify/app-bridge/actions';
 import { Context } from '@shopify/app-bridge-react';
 
+//The getProducts query accepts an array of IDs and returns the product’s title, handle, description, and ID. You’ll also request the product image’s URL and alt text, as well as the product’s price. In this case, you want to assign the query to a constant so it can be used in the query component. You’ll also need to use graphql-tag to parse the query so the component can read it.
 const GET_PRODUCTS_BY_ID = gql`
   query getProducts($ids: [ID!]!) {
     nodes(ids: $ids) {
@@ -34,9 +35,10 @@ const GET_PRODUCTS_BY_ID = gql`
   }
 `;
 
+// Apollo’s components use the render props pattern in React to show loading and error states. In this example, you’ve set loading and error states for when the Apollo query component is rendering or an error occurs.
 class ResourceListWithProducts extends React.Component {
   static contextType = Context;
-
+  // When users click items, they’ll be set in the localStorage. The clicked item, which is the product in this case, will generate information in the edit product form.
   render() {
     const app = this.context;
     const redirectToProduct = () => {
@@ -57,6 +59,7 @@ class ResourceListWithProducts extends React.Component {
           console.log(data);
           return (
             <Card>
+              {/* UI for Resource List */}
               <ResourceList
                 showHeader
                 resourceName={{ singular: 'Product', plural: 'Products' }}
@@ -82,6 +85,7 @@ class ResourceListWithProducts extends React.Component {
                       id={item.id}
                       media={media}
                       accessibilityLabel={`View details for ${item.title}`}
+                      // Clicked item sends info to resource list
                       onClick={() => {
                         store.set('item', item);
                         redirectToProduct();

@@ -10,18 +10,21 @@ import {
   TextField,
   TextStyle,
 } from "@shopify/polaris";
+// View all the components in Polaris library here: https://polaris.shopify.com/components/get-started
 
 class AnnotatedLayout extends React.Component {
   state = {
     discount: "10%",
   };
-
+  // render method returns React elements https://reactjs.org/docs/react-component.html#render
   render() {
+    // Next 3 lines: Add settings toggle part 1
     const { discount, enabled } = this.state;
     const contentStatus = enabled ? "Disable" : "Enable";
     const textStatus = enabled ? "enabled" : "disabled";
 
     return (
+      // Add Polaris components
       <Page>
         <Layout>
           <Layout.AnnotatedSection
@@ -46,6 +49,8 @@ class AnnotatedLayout extends React.Component {
               </Form>
             </Card>
           </Layout.AnnotatedSection>
+
+          {/* This section: Add settings toggle part 2 */}
           <Layout.AnnotatedSection
             title="Price updates"
             description="Temporarily disable all Sample App price updates"
@@ -61,6 +66,7 @@ class AnnotatedLayout extends React.Component {
               <TextStyle variation="strong">{textStatus}</TextStyle>
             </SettingToggle>
           </Layout.AnnotatedSection>
+
         </Layout>
       </Page>
     );
@@ -77,6 +83,7 @@ class AnnotatedLayout extends React.Component {
     return (value) => this.setState({ [field]: value });
   };
 
+  // Add settings toggle part 3
   handleToggle = () => {
     this.setState(({ enabled }) => {
       return { enabled: !enabled };

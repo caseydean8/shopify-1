@@ -1,3 +1,4 @@
+// Configure next.config.js file
 require("dotenv").config();
 const withCSS = require('@zeit/next-css');
 const webpack = require('webpack');

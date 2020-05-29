@@ -15,6 +15,7 @@ import store from "store-js";
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
 
+// Add UPDATE_PRICE mutatation
 const UPDATE_PRICE = gql`
   mutation productVariantUpdate($input: ProductVariantInput!) {
     productVariantUpdate(input: $input) {
@@ -37,16 +38,18 @@ class EditProduct extends React.Component {
     showToast: false,
   };
 
+  // This form has its state set with data from the store. When the component mounts, the itemToBeConsumed requests the clicked item from your store, and sets up state and variables. This form will be rendered on click using the redirect action from Shopify App Bridge.
   componentDidMount() {
     this.setState({ discount: this.itemToBeConsumed() });
   }
 
   render() {
     const { name, price, discount, variantId } = this.state;
-
+    // Add Apollo mutation
     return (
       <Mutation mutation={UPDATE_PRICE}>
         {(handleSubmit, { error, data }) => {
+          // Add a Toast component for a success message and a Banner component for an error message
           const showError = error && (
             <Banner status="critical">{error.message}</Banner>
           );
@@ -60,8 +63,11 @@ class EditProduct extends React.Component {
             <Frame>
               <Page>
                 <Layout>
+                  
+                  {/* The Toast component needs to be wrapped in the Frame component */}
                   {showToast}
                   <Layout.Section>{showError}</Layout.Section>
+                  
                   <Layout.Section>
                     <DisplayText size="large">{name}</DisplayText>
                     <Form>
@@ -90,11 +96,13 @@ class EditProduct extends React.Component {
                         primaryAction={[
                           {
                             content: "Save",
+                            // Add id and price variables to the productVariableInput constant:
                             onAction: () => {
                               const productVariableInput = {
                                 id: variantId,
                                 price: discount,
                               };
+                              // Add the handleSubmit and pass it the productVariableInput
                               handleSubmit({
                                 variables: { input: productVariableInput },
                               });
